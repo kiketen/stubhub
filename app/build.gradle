@@ -1,0 +1,94 @@
+apply from: '../dependencies.gradle'
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+    def globalConfiguration = project.extensions.getByName("ext")
+
+    buildToolsVersion globalConfiguration["buildToolsVersion"]
+    compileSdkVersion globalConfiguration["targetSdkVersion"]
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    defaultConfig {
+        applicationId globalConfiguration["applicationId"]
+        minSdkVersion globalConfiguration["minSdkVersion"]
+        targetSdkVersion globalConfiguration["targetSdkVersion"]
+        versionCode globalConfiguration["versionCode"]
+        versionName globalConfiguration["versionName"]
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    signingConfigs {
+
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
+    buildTypes {
+
+        debug {
+            debuggable true
+        }
+
+        release {
+            shrinkResources true
+            minifyEnabled true
+            debuggable false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "version"
+
+    productFlavors {
+
+        beta {
+            applicationIdSuffix ".beta"
+        }
+
+        store {
+
+        }
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation androidxDependencies.values()
+    implementation architectureComponentsDependencies.values()
+    implementation kotlinDependencies.values()
+    implementation googleDependencies.values()
+    kapt googleKaptDependencies.values()
+    implementation networkingDependencies.values()
+    implementation imageDependencies.values()
+    annotationProcessor imageAnnotationDependencies.values()
+    implementation project(':character')
+
+}
