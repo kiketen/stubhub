@@ -1,0 +1,47 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+apply from: '../dependencies.gradle'
+
+android {
+    def globalConfiguration = project.extensions.getByName("ext")
+
+    buildToolsVersion globalConfiguration["buildToolsVersion"]
+    compileSdkVersion globalConfiguration["targetSdkVersion"]
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    defaultConfig {
+        minSdkVersion globalConfiguration["minSdkVersion"]
+        targetSdkVersion globalConfiguration["compileSdkVersion"]
+        versionCode globalConfiguration["versionCode"]
+        versionName globalConfiguration["versionName"]
+    }
+
+    buildTypes {
+        debug {}
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation androidxDependencies.values()
+    implementation kotlinDependencies.values()
+    implementation architectureComponentsDependencies.values()
+}
