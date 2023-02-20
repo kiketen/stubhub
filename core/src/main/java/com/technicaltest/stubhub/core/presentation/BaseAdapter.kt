@@ -8,12 +8,8 @@ abstract class BaseAdapter<T : RecyclerView.ViewHolder, S>(
 
     override fun getItemCount() = items.size
 
-    fun add(item: S) {
-        items.add(item)
-        notifyDataSetChanged()
-    }
-
-    fun add(itemList: List<S>) {
+    fun update(itemList: List<S>){
+        items.clear()
         items.addAll(itemList)
         notifyDataSetChanged()
     }
@@ -22,4 +18,5 @@ abstract class BaseAdapter<T : RecyclerView.ViewHolder, S>(
         items.removeLast()
         notifyDataSetChanged()
     }
+
 }

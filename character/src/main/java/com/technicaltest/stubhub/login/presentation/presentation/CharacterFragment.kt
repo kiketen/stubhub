@@ -10,6 +10,7 @@ import com.technicaltest.stubhub.core.extensions.observe
 import com.technicaltest.stubhub.core.extensions.switchVisibility
 import com.technicaltest.stubhub.login.databinding.CharacterFragmentBinding
 import com.technicaltest.stubhub.login.presentation.presentation.adapter.CharactersAdapter
+import com.technicaltest.stubhub.login.presentation.presentation.adapter.CharactersAdapterListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,18 +37,27 @@ class CharacterFragment : Fragment() {
     }
 
     private fun setViewModelObservers() {
-        observe(viewModel.state) {
-            binding.progress.switchVisibility(it.loading)
-            adapter.add(it.characters)
+        observe(viewModel.characters) {
+            adapter.update(it.characters)
+            adapter.setPaginationInfo(it.total)
+        }
+        observe(viewModel.loading) {
+            binding.progress.switchVisibility(it)
         }
     }
 
     private fun setLayout() {
         adapter = CharactersAdapter(
-            context = requireContext(),
             characters = mutableListOf(),
-            onCharacterClick = {
-                viewModel.onCharacterClick(it)
+            listener = object : CharactersAdapterListener {
+                override fun onCharacterClick(id: String) {
+                    viewModel.onCharacterClick(id)
+                }
+
+                override fun onLoadPage(itemsCount: Int) {
+                    viewModel.onLoadMoreCharacters(itemsCount)
+                }
+
             }
         )
         with(binding) {

@@ -4,5 +4,5 @@ import io.reactivex.Observable
 
 
 interface CharactersRepository {
-    fun getCharacters(name: String): Observable<List<MarvelCharacter>>
+    fun getCharacters(name: String, offset: Int): Observable<MarvelCharacters>
 }
