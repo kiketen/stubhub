@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/charactersFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.technicaltest.stubhub.login.presentation.LoginFragment"
-        android:label="Home"
-        tools:layout="@layout/login_fragment">
+        android:id="@+id/charactersFragment"
+        android:name="com.technicaltest.stubhub.login.presentation.presentation.CharacterFragment"
+        android:label="Characters"
+        tools:layout="@layout/character_fragment">
 
     </fragment>
 </navigation>

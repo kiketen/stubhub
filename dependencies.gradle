@@ -5,12 +5,13 @@ ext {
     versionCode = 1
     compileSdkVersion = 33
     targetSdkVersion = 33
-    minSdkVersion = 22
+    minSdkVersion = 23
     buildToolsVersion = '30.0.0'
     flavorDimensions = "default"
 
     kotlin_version = "1.8.10"
-    kotlin_coroutines_version = "1.6.4"
+    rxKotlin = "2.4.0"
+    rxJavaAndroid = "2.1.1"
 
     androidx_appcompat_version = '1.6.0'
     androidx_core_version = '1.9.0'
@@ -31,9 +32,9 @@ ext {
     glide_version = "4.14.2"
 
     kotlinDependencies = [
-            kotlin                 : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
-            kotlinCoroutines       : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version",
-            kotlinCoroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
+            kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            rxjava: "io.reactivex.rxjava2:rxkotlin:$rxKotlin",
+            rxAndroid: "io.reactivex.rxjava2:rxandroid:$rxJavaAndroid"
     ]
 
     androidxDependencies = [
@@ -60,7 +61,7 @@ ext {
     ]
 
     googleDependencies = [
-            hilt       : "com.google.dagger:hilt-android:$hilt_version"
+            hilt: "com.google.dagger:hilt-android:$hilt_version"
     ]
 
     googleKaptDependencies = [
@@ -71,6 +72,7 @@ ext {
             retrofit            : "com.squareup.retrofit2:retrofit:$retrofit_version",
             retrofitCoverterGson: "com.squareup.retrofit2:converter-gson:$retrofit_version",
             okhttp3Interceptor  : "com.squareup.okhttp3:logging-interceptor:$okhttp3_logging_interceptor_version",
+            retrofitAdapter     : "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version",
             gson                : "com.google.code.gson:gson:$gson_version"
     ]
 
