@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/charactersFragment"
-        android:name="com.technicaltest.stubhub.login.presentation.presentation.CharacterFragment"
+        android:name="com.technicaltest.stubhub.login.presentation.presentation.CharactersFragment"
         android:label="Characters"
-        tools:layout="@layout/character_fragment">
+        tools:layout="@layout/characters_fragment">
 
     </fragment>
 </navigation>

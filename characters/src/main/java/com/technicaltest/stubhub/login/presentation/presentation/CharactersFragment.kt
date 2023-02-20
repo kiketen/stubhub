@@ -1,23 +1,27 @@
 package com.technicaltest.stubhub.login.presentation.presentation
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.google.android.material.internal.TextWatcherAdapter
 import com.technicaltest.stubhub.core.extensions.observe
 import com.technicaltest.stubhub.core.extensions.switchVisibility
-import com.technicaltest.stubhub.login.databinding.CharacterFragmentBinding
+import com.technicaltest.stubhub.login.databinding.CharactersFragmentBinding
 import com.technicaltest.stubhub.login.presentation.presentation.adapter.CharactersAdapter
 import com.technicaltest.stubhub.login.presentation.presentation.adapter.CharactersAdapterListener
 import dagger.hilt.android.AndroidEntryPoint
 
+@SuppressLint("RestrictedApi")
 @AndroidEntryPoint
-class CharacterFragment : Fragment() {
+class CharactersFragment : Fragment() {
 
-    private lateinit var binding: CharacterFragmentBinding
-    private val viewModel: CharacterViewModel by viewModels()
+    private lateinit var binding: CharactersFragmentBinding
+    private val viewModel: CharactersViewModel by viewModels()
 
     private lateinit var adapter: CharactersAdapter
 
@@ -26,7 +30,7 @@ class CharacterFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = CharacterFragmentBinding.inflate(inflater, container, false)
+        binding = CharactersFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -62,6 +66,11 @@ class CharacterFragment : Fragment() {
         )
         with(binding) {
             recycler.adapter = adapter
+            searchCharacterField.addTextChangedListener(object : TextWatcherAdapter() {
+                override fun afterTextChanged(s: Editable) {
+                    viewModel.onSearchTextUpdated(s.toString())
+                }
+            })
         }
     }
 

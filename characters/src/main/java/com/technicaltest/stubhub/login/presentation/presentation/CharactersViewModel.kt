@@ -11,7 +11,7 @@ import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 @HiltViewModel
-class CharacterViewModel @Inject constructor(
+class CharactersViewModel @Inject constructor(
     private val charactersRepository: CharactersRepository,
     private val threadScheduler: ThreadScheduler
 ) : ViewModel() {
@@ -25,7 +25,6 @@ class CharacterViewModel @Inject constructor(
     private val disposable: CompositeDisposable = CompositeDisposable()
 
     init {
-        _loading.value = true
         getCharacters("", 0)
     }
 
@@ -39,11 +38,16 @@ class CharacterViewModel @Inject constructor(
     }
 
     fun onLoadMoreCharacters(itemsCount: Int) {
-        _loading.value = true
         getCharacters("", itemsCount)
     }
 
+    fun onSearchTextUpdated(name: String) {
+        _characters.value = MarvelCharacters(0, listOf())
+        getCharacters(name, 0)
+    }
+
     private fun getCharacters(name: String, itemsCount: Int) {
+        _loading.value = true
         disposable.clear()
         disposable.add(
             charactersRepository.getCharacters(name, itemsCount)

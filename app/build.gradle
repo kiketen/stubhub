@@ -80,6 +80,6 @@ dependencies {
     implementation networkingDependencies.values()
     implementation imageDependencies.values()
     annotationProcessor imageAnnotationDependencies.values()
-    implementation project(':character')
+    implementation project(':characters')
 
 }
