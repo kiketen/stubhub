@@ -81,4 +81,5 @@ dependencies {
     implementation imageDependencies.values()
     annotationProcessor imageAnnotationDependencies.values()
     implementation project(':characters')
+    implementation project(':details')
 }

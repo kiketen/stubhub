@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="character_comics">Comics</string>
+    <string name="character_series">Series</string>
+    <string name="character_events">Events</string>
+</resources>
