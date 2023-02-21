@@ -31,7 +31,6 @@ class CharacterDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setViewModelObservers()
-        setLayout()
     }
 
     private fun setViewModelObservers() {
@@ -39,12 +38,25 @@ class CharacterDetailsFragment : Fragment() {
             binding.characterDetailsName.text = it.name
             Glide.with(this).load(it.image).into(binding.characterDetailsImage)
         }
+        observe(viewModel.loadingComics) {
+            binding.characterComics.showLoading(it)
+        }
+        observe(viewModel.loadingSeries) {
+            binding.characterSeries.showLoading(it)
+        }
+        observe(viewModel.loadingEvents) {
+            binding.characterEvents.showLoading(it)
+        }
+        observe(viewModel.comics) {
+            binding.characterComics.showApparitions(it)
+        }
+        observe(viewModel.series) {
+            binding.characterSeries.showApparitions(it)
+        }
+        observe(viewModel.events) {
+            binding.characterEvents.showApparitions(it)
+        }
     }
-
-    private fun setLayout() {
-    }
-
-
 }
 
 
