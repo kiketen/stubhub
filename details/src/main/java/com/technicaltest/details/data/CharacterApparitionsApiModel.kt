@@ -1,18 +1,18 @@
-package com.technicaltest.stubhub.data
+package com.technicaltest.details.data
 
 import com.google.gson.annotations.SerializedName
+import com.technicaltest.details.domain.CharacterApparition
 import com.technicaltest.stubhub.core.data.CharacterThumbnail
-import com.technicaltest.stubhub.domain.MarvelCharacter
 
 
-data class CharacterApiModel(
+data class CharacterApparitionApiModel(
     @SerializedName("id") val id: String,
-    @SerializedName("name") val name: String,
+    @SerializedName("title") val title: String,
     @SerializedName("thumbnail") val thumbnail: CharacterThumbnail
 )
 
-fun CharacterApiModel.toDomain() = MarvelCharacter(
+fun CharacterApparitionApiModel.toDomain() = CharacterApparition(
     id = id,
-    name = name,
+    title = title,
     image = "${thumbnail.path}.${thumbnail.extension}"
 )

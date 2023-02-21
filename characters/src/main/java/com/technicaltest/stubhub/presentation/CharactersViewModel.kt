@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.technicaltest.stubhub.core.presentation.SingleLiveEvent
 import com.technicaltest.stubhub.core.presentation.ThreadScheduler
 import com.technicaltest.stubhub.domain.CharactersRepository
+import com.technicaltest.stubhub.domain.MarvelCharacter
 import com.technicaltest.stubhub.domain.MarvelCharacters
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.disposables.CompositeDisposable
@@ -26,6 +27,9 @@ class CharactersViewModel @Inject constructor(
     private val _error = SingleLiveEvent<CharactersError>()
     val error: LiveData<CharactersError> get() = _error
 
+    private val _navigation = SingleLiveEvent<CharactersNavigation>()
+    val navigation: LiveData<CharactersNavigation> get() = _navigation
+
     private val disposable: CompositeDisposable = CompositeDisposable()
 
     init {
@@ -37,8 +41,8 @@ class CharactersViewModel @Inject constructor(
         disposable.clear()
     }
 
-    fun onCharacterClick(id: String) {
-
+    fun onCharacterClick(marvelCharacter: MarvelCharacter) {
+        _navigation.value = CharactersNavigation.Details(marvelCharacter)
     }
 
     fun onLoadMoreCharacters(itemsCount: Int) {

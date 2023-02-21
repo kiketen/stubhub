@@ -34,7 +34,7 @@ class CharactersAdapter(
             name.text = character.name
             Glide.with(image).load(character.image).into(image)
             root.setSensitiveClickListener {
-                listener.onCharacterClick(character.id)
+                listener.onCharacterClick(character)
             }
         }
     }

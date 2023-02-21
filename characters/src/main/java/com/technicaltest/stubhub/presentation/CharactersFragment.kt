@@ -1,6 +1,7 @@
 package com.technicaltest.stubhub.presentation
 
 import android.annotation.SuppressLint
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.view.LayoutInflater
@@ -9,11 +10,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.internal.TextWatcherAdapter
 import com.technicaltest.stubhub.characters.R
 import com.technicaltest.stubhub.characters.databinding.CharactersFragmentBinding
 import com.technicaltest.stubhub.core.extensions.observe
 import com.technicaltest.stubhub.core.extensions.switchVisibility
+import com.technicaltest.stubhub.domain.MarvelCharacter
 import com.technicaltest.stubhub.presentation.adapter.CharactersAdapter
 import com.technicaltest.stubhub.presentation.adapter.CharactersAdapterListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,14 +60,28 @@ class CharactersFragment : Fragment() {
                 CharactersError.Unknown -> Toast.makeText(context, R.string.characters_error_unknown, Toast.LENGTH_SHORT).show()
             }
         }
+        observe(viewModel.navigation) {
+            when (it) {
+                is CharactersNavigation.Details -> {
+                    with(it.marvelCharacter) {
+                        val deepLink = Uri.parse("app://characterDetailsFragment/").buildUpon()
+                            .appendQueryParameter("id", id)
+                            .appendQueryParameter("name", name)
+                            .appendQueryParameter("image", image)
+                            .build()
+                        findNavController().navigate(deepLink)
+                    }
+                }
+            }
+        }
     }
 
     private fun setLayout() {
         adapter = CharactersAdapter(
             characters = mutableListOf(),
             listener = object : CharactersAdapterListener {
-                override fun onCharacterClick(id: String) {
-                    viewModel.onCharacterClick(id)
+                override fun onCharacterClick(marvelCharacter: MarvelCharacter) {
+                    viewModel.onCharacterClick(marvelCharacter)
                 }
 
                 override fun onLoadPage(itemsCount: Int) {

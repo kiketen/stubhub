@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/character_details_navigation"
+    app:startDestination="@id/characterDetailsFragment">
+
+    <fragment
+        android:id="@+id/characterDetailsFragment"
+        android:name="com.technicaltest.details.presentation.CharacterDetailsFragment"
+        android:label="Character Details"
+        tools:layout="@layout/character_details_fragment">
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="image"
+            app:argType="string" />
+        <deepLink app:uri="app://characterDetailsFragment/?id={id}&amp;name={name}&amp;image={image}" />
+    </fragment>
+</navigation>
