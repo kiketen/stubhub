@@ -9,9 +9,9 @@ interface CharacterDetailsApi {
     @GET("/v1/public/characters/{characterId}/comics")
     fun getComics(@Path("characterId") characterId: String): Observable<ApiResponse<CharacterApparitionApiModel>>
 
-    @GET("/v1/public/characters/{characterId}/comics")
+    @GET("/v1/public/characters/{characterId}/series")
     fun getSeries(@Path("characterId") characterId: String): Observable<ApiResponse<CharacterApparitionApiModel>>
 
-    @GET("/v1/public/characters/{characterId}/comics")
+    @GET("/v1/public/characters/{characterId}/events")
     fun getEvents(@Path("characterId") characterId: String): Observable<ApiResponse<CharacterApparitionApiModel>>
 }

@@ -35,6 +35,7 @@ class CharacterApparitionView @JvmOverloads constructor(
     }
 
     fun showApparitions(apparitions: List<CharacterApparition>) {
+        binding.characterApparitionTitle.switchVisibility(apparitions.isNotEmpty())
         adapter.update(apparitions)
     }
 
