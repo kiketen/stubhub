@@ -16,10 +16,10 @@ fun View.isVisible(): Boolean {
     return visibility == View.VISIBLE
 }
 
-fun View.switchVisibilityAnimated(visible: Boolean, duration: Long = VISIBILITY_ANIMATION_DURATION) {
+fun View.switchVisibility(visible: Boolean) {
     this.animate().cancel()
     when {
-        visible -> fadeIn(duration = duration)
-        !visible -> fadeOut(duration = duration)
+        visible -> visible()
+        !visible -> gone()
     }
 }

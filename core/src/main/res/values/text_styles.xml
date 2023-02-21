@@ -1,0 +1,19 @@
+<resources>
+
+    <style name="BaseText" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextTitle" parent="BaseText">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="TextBody" parent="BaseText">
+        <item name="android:textSize">14dp</item>
+    </style>
+
+</resources>

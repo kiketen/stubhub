@@ -28,6 +28,8 @@ android {
         versionCode globalConfiguration["versionCode"]
         versionName globalConfiguration["versionName"]
         vectorDrawables.useSupportLibrary = true
+        buildConfigField "String", "API_KEY", "\"${project.getProperty('API_KEY')}\""
+        buildConfigField "String", "PRIVATE_KEY", "\"${project.getProperty('PRIVATE_KEY')}\""
     }
 
     signingConfigs {
@@ -57,17 +59,6 @@ android {
 
     flavorDimensions "version"
 
-    productFlavors {
-
-        beta {
-            applicationIdSuffix ".beta"
-        }
-
-        store {
-
-        }
-    }
-
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8
     }
@@ -89,6 +80,5 @@ dependencies {
     implementation networkingDependencies.values()
     implementation imageDependencies.values()
     annotationProcessor imageAnnotationDependencies.values()
-    implementation project(':character')
-
+    implementation project(':characters')
 }
