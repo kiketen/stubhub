@@ -31,6 +31,7 @@ class CharactersViewModel @Inject constructor(
     val navigation: LiveData<CharactersNavigation> get() = _navigation
 
     private val disposable: CompositeDisposable = CompositeDisposable()
+    private var lastTextQueried = ""
 
     init {
         getCharacters("", 0)
@@ -50,8 +51,11 @@ class CharactersViewModel @Inject constructor(
     }
 
     fun onSearchTextUpdated(name: String) {
-        _characters.value = MarvelCharacters(0, listOf())
-        getCharacters(name, 0)
+        if (name != lastTextQueried) {
+            lastTextQueried = name
+            _characters.value = MarvelCharacters(0, listOf())
+            getCharacters(name, 0)
+        }
     }
 
     private fun getCharacters(name: String, itemsCount: Int) {
