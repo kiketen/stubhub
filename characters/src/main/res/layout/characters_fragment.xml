@@ -30,7 +30,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
+        android:id="@+id/characters"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -40,7 +40,7 @@
         tools:listitem="@layout/character_item" />
 
     <ProgressBar
-        android:id="@+id/progress"
+        android:id="@+id/charactersLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"

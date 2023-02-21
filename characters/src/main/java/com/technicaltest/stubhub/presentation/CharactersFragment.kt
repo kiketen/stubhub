@@ -1,4 +1,4 @@
-package com.technicaltest.stubhub.login.presentation.presentation
+package com.technicaltest.stubhub.presentation
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -10,12 +10,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.internal.TextWatcherAdapter
+import com.technicaltest.stubhub.characters.R
+import com.technicaltest.stubhub.characters.databinding.CharactersFragmentBinding
 import com.technicaltest.stubhub.core.extensions.observe
 import com.technicaltest.stubhub.core.extensions.switchVisibility
-import com.technicaltest.stubhub.login.R
-import com.technicaltest.stubhub.login.databinding.CharactersFragmentBinding
-import com.technicaltest.stubhub.login.presentation.presentation.adapter.CharactersAdapter
-import com.technicaltest.stubhub.login.presentation.presentation.adapter.CharactersAdapterListener
+import com.technicaltest.stubhub.presentation.adapter.CharactersAdapter
+import com.technicaltest.stubhub.presentation.adapter.CharactersAdapterListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @SuppressLint("RestrictedApi")
@@ -48,7 +48,7 @@ class CharactersFragment : Fragment() {
             adapter.setPaginationInfo(it.total)
         }
         observe(viewModel.loading) {
-            binding.progress.switchVisibility(it)
+            binding.charactersLoading.switchVisibility(it)
         }
         observe(viewModel.error) {
             when (it) {
@@ -74,7 +74,7 @@ class CharactersFragment : Fragment() {
             }
         )
         with(binding) {
-            recycler.adapter = adapter
+            characters.adapter = adapter
             searchCharacterField.addTextChangedListener(object : TextWatcherAdapter() {
                 override fun afterTextChanged(s: Editable) {
                     viewModel.onSearchTextUpdated(s.toString())

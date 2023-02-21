@@ -1,12 +1,12 @@
-package com.technicaltest.stubhub.login.presentation.presentation
+package com.technicaltest.stubhub.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.technicaltest.stubhub.core.presentation.SingleLiveEvent
 import com.technicaltest.stubhub.core.presentation.ThreadScheduler
-import com.technicaltest.stubhub.login.presentation.domain.CharactersRepository
-import com.technicaltest.stubhub.login.presentation.domain.MarvelCharacters
+import com.technicaltest.stubhub.domain.CharactersRepository
+import com.technicaltest.stubhub.domain.MarvelCharacters
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject

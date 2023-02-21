@@ -1,4 +1,4 @@
-package com.technicaltest.stubhub.login.presentation.presentation
+package com.technicaltest.stubhub.presentation
 
 
 sealed class CharactersError {

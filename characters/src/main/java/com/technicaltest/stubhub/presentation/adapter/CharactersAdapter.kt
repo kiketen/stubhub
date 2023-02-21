@@ -1,13 +1,13 @@
-package com.technicaltest.stubhub.login.presentation.presentation.adapter
+package com.technicaltest.stubhub.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.technicaltest.stubhub.characters.databinding.CharacterItemBinding
 import com.technicaltest.stubhub.core.presentation.PaginationAdapter
 import com.technicaltest.stubhub.core.presentation.setSensitiveClickListener
-import com.technicaltest.stubhub.login.databinding.CharacterItemBinding
-import com.technicaltest.stubhub.login.presentation.domain.MarvelCharacter
+import com.technicaltest.stubhub.domain.MarvelCharacter
 
 class CharactersAdapter(
     private val characters: MutableList<MarvelCharacter>,

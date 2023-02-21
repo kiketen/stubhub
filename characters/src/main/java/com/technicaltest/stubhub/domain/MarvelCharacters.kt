@@ -1,4 +1,4 @@
-package com.technicaltest.stubhub.login.presentation.domain
+package com.technicaltest.stubhub.domain
 
 
 data class MarvelCharacters(

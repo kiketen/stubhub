@@ -1,4 +1,4 @@
-package com.technicaltest.stubhub.login.presentation.presentation.adapter
+package com.technicaltest.stubhub.presentation.adapter
 
 
 interface CharactersAdapterListener {

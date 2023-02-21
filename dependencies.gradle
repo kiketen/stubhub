@@ -6,7 +6,7 @@ ext {
     compileSdkVersion = 33
     targetSdkVersion = 33
     minSdkVersion = 23
-    buildToolsVersion = '30.0.0'
+    buildToolsVersion = '30.0.3'
     flavorDimensions = "default"
 
     kotlin_version = "1.8.10"
@@ -31,9 +31,18 @@ ext {
 
     glide_version = "4.14.2"
 
+    //Testing
+    mock_version = "1.13.4"
+    core_version = "1.5.0"
+    junit_version = "4.13"
+    test_runner = "1.5.2"
+    test_rules = "1.5.0"
+    espresso = "3.5.1"
+    test_arch_core = "2.1.0"
+
     kotlinDependencies = [
-            kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
-            rxjava: "io.reactivex.rxjava2:rxkotlin:$rxKotlin",
+            kotlin   : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            rxjava   : "io.reactivex.rxjava2:rxkotlin:$rxKotlin",
             rxAndroid: "io.reactivex.rxjava2:rxandroid:$rxJavaAndroid"
     ]
 
@@ -82,5 +91,18 @@ ext {
 
     imageAnnotationDependencies = [
             glide: "com.github.bumptech.glide:compiler:$glide_version"
+    ]
+
+    testDependencies = [
+            mockk              : "io.mockk:mockk:$mock_version",
+            mockkAndroid       : "io.mockk:mockk-android:$mock_version",
+            junit              : "junit:junit:$junit_version",
+            testRunner         : "androidx.test:runner:$test_runner",
+            testRules          : "androidx.test:rules:$test_rules",
+            testEspressoCore   : "androidx.test.espresso:espresso-core:$espresso",
+            testEspressoIntents: "androidx.test.espresso:espresso-intents:$espresso",
+            testEspressoContrib: "androidx.test.espresso:espresso-contrib:$espresso",
+            testArchCore       : "androidx.arch.core:core-testing:$test_arch_core"
+
     ]
 }

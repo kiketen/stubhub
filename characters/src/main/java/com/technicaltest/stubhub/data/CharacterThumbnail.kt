@@ -1,4 +1,4 @@
-package com.technicaltest.stubhub.login.presentation.data
+package com.technicaltest.stubhub.data
 
 import com.google.gson.annotations.SerializedName
 

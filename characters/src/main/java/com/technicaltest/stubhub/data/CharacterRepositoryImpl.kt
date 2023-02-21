@@ -1,7 +1,7 @@
-package com.technicaltest.stubhub.login.presentation.data
+package com.technicaltest.stubhub.data
 
-import com.technicaltest.stubhub.login.presentation.domain.CharactersRepository
-import com.technicaltest.stubhub.login.presentation.domain.MarvelCharacters
+import com.technicaltest.stubhub.domain.CharactersRepository
+import com.technicaltest.stubhub.domain.MarvelCharacters
 import io.reactivex.Observable
 
 

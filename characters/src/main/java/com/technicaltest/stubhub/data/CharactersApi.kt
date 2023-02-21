@@ -1,6 +1,7 @@
-package com.technicaltest.stubhub.login.presentation.data
+package com.technicaltest.stubhub.data
 
 import com.technicaltest.stubhub.core.data.ApiResponse
+import com.technicaltest.stubhub.data.CharacterApiModel
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query

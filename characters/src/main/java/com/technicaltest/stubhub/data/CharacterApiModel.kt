@@ -1,7 +1,7 @@
-package com.technicaltest.stubhub.login.presentation.data
+package com.technicaltest.stubhub.data
 
 import com.google.gson.annotations.SerializedName
-import com.technicaltest.stubhub.login.presentation.domain.MarvelCharacter
+import com.technicaltest.stubhub.domain.MarvelCharacter
 
 
 data class CharacterApiModel(

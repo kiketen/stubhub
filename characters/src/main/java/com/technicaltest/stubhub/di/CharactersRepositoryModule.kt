@@ -1,8 +1,8 @@
-package com.technicaltest.stubhub.login.presentation.di
+package com.technicaltest.stubhub.di
 
-import com.technicaltest.stubhub.login.presentation.data.CharacterRepositoryImpl
-import com.technicaltest.stubhub.login.presentation.data.CharactersApi
-import com.technicaltest.stubhub.login.presentation.domain.CharactersRepository
+import com.technicaltest.stubhub.data.CharacterRepositoryImpl
+import com.technicaltest.stubhub.data.CharactersApi
+import com.technicaltest.stubhub.domain.CharactersRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
