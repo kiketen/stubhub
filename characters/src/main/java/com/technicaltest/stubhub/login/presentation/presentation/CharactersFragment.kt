@@ -6,11 +6,13 @@ import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.internal.TextWatcherAdapter
 import com.technicaltest.stubhub.core.extensions.observe
 import com.technicaltest.stubhub.core.extensions.switchVisibility
+import com.technicaltest.stubhub.login.R
 import com.technicaltest.stubhub.login.databinding.CharactersFragmentBinding
 import com.technicaltest.stubhub.login.presentation.presentation.adapter.CharactersAdapter
 import com.technicaltest.stubhub.login.presentation.presentation.adapter.CharactersAdapterListener
@@ -47,6 +49,13 @@ class CharactersFragment : Fragment() {
         }
         observe(viewModel.loading) {
             binding.progress.switchVisibility(it)
+        }
+        observe(viewModel.error) {
+            when (it) {
+                CharactersError.CharactersNotFound -> Toast.makeText(context, R.string.characters_error_not_found, Toast.LENGTH_SHORT)
+                    .show()
+                CharactersError.Unknown -> Toast.makeText(context, R.string.characters_error_unknown, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
